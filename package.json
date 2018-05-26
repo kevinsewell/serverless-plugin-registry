@@ -1,0 +1,33 @@
+{
+  "name": "serverless-plugin-registry",
+  "version": "0.0.1",
+  "description": "Serverless plugin to register function names with AWS SSM Parameter Store",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "standard src/**",
+    "lint:fix": "standard --fix src/**"
+  },
+  "author": "Kevin W. Sewell",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aronim/serverless-plugin-registry.git"
+  },
+  "keywords": [
+    "serverless plugin registry lambdas",
+    "serverless registry",
+    "serverless plugin",
+    "lambda serverless",
+    "registry lambda",
+    "aws ssm"
+  ],
+  "bugs": {
+    "url": "https://github.com/aronim/serverless-plugin-registry/issues"
+  },
+  "homepage": "https://github.com/aronim/serverless-plugin-registry",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "js-yaml": "^3.11.0",
+    "lodash": "^4.17.10"
+  }
+}
