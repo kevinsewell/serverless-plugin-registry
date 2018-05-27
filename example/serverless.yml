@@ -30,6 +30,15 @@ functions:
           path: hello
           method: get
           cors: true
+  Hello-1:
+    handler: hello.handle
+    registry:
+      baseName: /ServerlessRegistryExampleCustom/${self:provider.stage}/HelloThereSailor
+    events:
+      - http:
+          path: hello
+          method: get
+          cors: true
   Goodbye:
     handler: goodbye.handle
     events:

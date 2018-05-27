@@ -2,7 +2,6 @@
 
 const BbPromise = require("bluebird");
 const _ = require("lodash");
-const YAML = require("js-yaml");
 
 /**
  * @classdesc   Register function names with AWS SSM Parameter Store
@@ -19,7 +18,7 @@ class ServerlessPluginRegistry {
     constructor(serverless, options) {
         this.serverless = serverless;
         this.options = options;
-        this.provider = this.serverless.getProvider("aws");
+        this.provider = serverless.getProvider("aws");
 
         this.commands = {
             registry: {
@@ -43,7 +42,8 @@ class ServerlessPluginRegistry {
         allFunctions.forEach(functionName => {
             const function_ = this.serverless.service.getFunction(functionName);
             const fqFunctionName = function_.name;
-            const functionNameParameterLogicalId = functionName + "FunctionNameParameter";
+            const functionNameParameterLogicalId =
+                this.provider.naming.getNormalizedFunctionName(functionName) + "FunctionNameParameter";
 
             let functionParametersBaseName = this.getFunctionParametersBaseName(functionName, function_);
 
