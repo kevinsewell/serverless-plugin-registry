@@ -5,7 +5,7 @@ Serverless Registry Plugin
 [![npm downloads](https://img.shields.io/npm/dm/serverless-plugin-registry.svg)](https://www.npmjs.com/package/serverless-plugin-registry)
 [![license](https://img.shields.io/npm/l/serverless-plugin-registry.svg)](https://raw.githubusercontent.com/aronim/serverless-plugin-registry/master/LICENSE)
 
-Registry your Configuration and Code
+Serverless plugin to register function names with AWS SSM Parameter Store
 
 **Requirements:**
 * Serverless *v1.12.x* or higher.
