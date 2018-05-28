@@ -5,7 +5,7 @@ Serverless Registry Plugin
 [![npm downloads](https://img.shields.io/npm/dm/serverless-plugin-registry.svg)](https://www.npmjs.com/package/serverless-plugin-registry)
 [![license](https://img.shields.io/npm/l/serverless-plugin-registry.svg)](https://raw.githubusercontent.com/aronim/serverless-plugin-registry/master/LICENSE)
 
-Registry your Configuration and Code
+Register function names with AWS SSM Parameter Store
 
 **Requirements:**
 * Serverless *v1.12.x* or higher.
@@ -95,6 +95,35 @@ functions:
 This will produce an SSM Parameter with 
 - Name: /Registry/Test/Hello/FunctionName
 - Value: ServerlessPluginRegistry-Test-Hello
+
+### Only Publish Select Functions
+
+```yml
+service: ServerlessPluginRegistry
+
+provider:
+  stage: ${opt:stage, "Test"}
+
+functions:
+  Hello:
+    handler: hello.js    
+    registry:
+      baseName: /Registry/${self:provider.stage}
+  HowAreYou:
+    handler: howAreYou.js    
+    registry:
+      register: true
+  Goodbye:
+    handler: goodbye.js    
+```
+
+This will only produce two SSM Parameters with
+ 
+- Name: /Registry/Test/Hello/FunctionName
+- Value: ServerlessPluginRegistry-Test-Hello
+
+- Name: /ServerlessPluginRegistry/Test/HowAreYou/FunctionName
+- Value: ServerlessPluginRegistry-Test-HowAreYou
 
 ## Contribute
 

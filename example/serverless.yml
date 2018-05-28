@@ -18,13 +18,14 @@ package:
 
 custom:
   registry:
+#    registerAll: true
     baseName: /Registry/${self:provider.stage}
 
 functions:
   Hello:
     handler: hello.handle
     registry:
-      baseName: /ServerlessRegistryExampleCustom/${self:provider.stage}/HelloThereSailor
+      register: true
     events:
       - http:
           path: hello

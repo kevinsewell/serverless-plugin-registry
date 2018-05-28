@@ -37,10 +37,28 @@ class ServerlessPluginRegistry {
     }
 
     afterPackageInitialize() {
-        const allFunctions = this.serverless.service.getAllFunctions();
+        const functionsToRegister = this.serverless.service.getAllFunctions();
 
-        allFunctions.forEach(functionName => {
+        let registerAll = this.serverless.service.custom &&
+            this.serverless.service.custom.registry &&
+            this.serverless.service.custom.registry.registerAll;
+
+        if (typeof registerAll === "undefined") {
+            registerAll = true;
+        }
+
+        functionsToRegister.forEach(functionName => {
             const function_ = this.serverless.service.getFunction(functionName);
+
+            if (!registerAll) {
+
+                const shouldRegisterThisFunction = function_.registry &&
+                    (function_.registry.register || function_.registry.baseName);
+
+                if (!shouldRegisterThisFunction)
+                    return;
+            }
+
             const fqFunctionName = function_.name;
             const functionNameParameterLogicalId =
                 this.provider.naming.getNormalizedFunctionName(functionName) + "FunctionNameParameter";
@@ -65,8 +83,7 @@ class ServerlessPluginRegistry {
 
     getFunctionParametersBaseName(functionName, function_) {
         if (function_.registry &&
-            function_.registry.name) {
-
+            function_.registry.baseName) {
             return function_.registry.baseName;
         }
 
