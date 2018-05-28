@@ -53,7 +53,7 @@ functions:
 ```
 
 This will produce an SSM Parameter with 
-- Name: /ServerlessPluginRegistry/Test/Hello/FunctionName
+- Name: /ServerlessPluginRegistry/Test/Hello
 - Value: ServerlessPluginRegistry-Test-Hello
 
 ### Global Base Name
@@ -74,7 +74,7 @@ functions:
 ```
 
 This will produce an SSM Parameter with 
-- Name: /Registry/Test/Hello/FunctionName
+- Name: /Registry/Test/Hello
 - Value: ServerlessPluginRegistry-Test-Hello
 
 ### Function Base Name
@@ -93,7 +93,7 @@ functions:
 ```
 
 This will produce an SSM Parameter with 
-- Name: /Registry/Test/Hello/FunctionName
+- Name: /Registry/Test/Hello
 - Value: ServerlessPluginRegistry-Test-Hello
 
 ### Only Publish Select Functions
@@ -119,10 +119,10 @@ functions:
 
 This will only produce two SSM Parameters with
  
-- Name: /Registry/Test/Hello/FunctionName
+- Name: /Registry/Test/Hello
 - Value: ServerlessPluginRegistry-Test-Hello
 
-- Name: /ServerlessPluginRegistry/Test/HowAreYou/FunctionName
+- Name: /ServerlessPluginRegistry/Test/HowAreYou
 - Value: ServerlessPluginRegistry-Test-HowAreYou
 
 ## Contribute
