@@ -80,7 +80,7 @@ class ServerlessPluginRegistry {
                 [functionNameParameterLogicalId]: {
                     Type: "AWS::SSM::Parameter",
                     Properties: {
-                        Name: functionParametersBaseName + "/FunctionName",
+                        Name: functionParametersBaseName,
                         Type: "String",
                         Value: fqFunctionName
                     },
