@@ -27,6 +27,17 @@ class ServerlessPluginRegistry {
             }
         };
 
+        serverless.configSchemaHandler.defineFunctionProperties('aws', {
+            properties:{
+                registry: { 
+                    type: 'object',
+                    properties: {
+                        baseName: { type: 'string'}
+                    }
+                }
+            }
+        });
+
         this.hooks = {
             "registry:registry": () => {
                 this.serverless.cli.generateCommandsHelp(["registry"]);
@@ -69,7 +80,7 @@ class ServerlessPluginRegistry {
                 [functionNameParameterLogicalId]: {
                     Type: "AWS::SSM::Parameter",
                     Properties: {
-                        Name: functionParametersBaseName + "/FunctionName",
+                        Name: functionParametersBaseName,
                         Type: "String",
                         Value: fqFunctionName
                     },
